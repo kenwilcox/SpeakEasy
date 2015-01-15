@@ -2,18 +2,28 @@ package com.k3nx.speakeasy;
 
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
 
 public class MainActivity extends ActionBarActivity {
+    private static final String TAG = "MainActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Speaker[] speakers = {new Human(), new Dog(), new Cat()};
+        saySomething(speakers);
     }
 
+    private void saySomething(Speaker[] speakers) {
+        for(Speaker speaker: speakers) {
+            Log.d(TAG, speaker.speak());
+        }
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
